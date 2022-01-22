@@ -1,0 +1,311 @@
+Started by user admin
+Running as SYSTEM
+Building in workspace C:\ProgramData\Jenkins\.jenkins\workspace\ContactListTest
+[ContactListTest] $ sh -xe C:\Windows\TEMP\jenkins2607442402689847333.sh
++ newman run contactlists.collection.json -e contactLists.environment.json
+newman
+
+Contact Lists
+
+□ Basic Endpoint Test
+└ Get Contact Lists
+  GET 3.13.86.142:3000/contacts/61ea46fdf2967f0ec8948b20 [errored]
+     connect ENETUNREACH 3.13.86.142:3000
+  2. Response time is less than 3000ms
+  3. Response time is less than 200ms
+  4. Status code is 200
+  5. Content-Type is application/json
+
+└ Add Contact Lists
+  POST 3.13.86.142:3000/contacts/ [errored]
+     connect ENETUNREACH 3.13.86.142:3000
+  7. Response time is less than 3000ms
+  8. Response time is less than 200ms
+  9⠄ JSONError in test-script
+
+└ Get Contact
+  GET 3.13.86.142:3000/contacts/61ea46fdf2967f0ec8948b20 [errored]
+     connect ENETUNREACH 3.13.86.142:3000
+ 11. Response time is less than 3000ms
+ 12. Response time is less than 200ms
+ 13⠄ JSONError in test-script
+
+└ Update Contact
+  PUT 3.13.86.142:3000/contacts/61ea43bdf2967f0ec8948b10 [errored]
+     connect ENETUNREACH 3.13.86.142:3000
+ 15. Response time is less than 3000ms
+ 16. Response time is less than 200ms
+
+└ Delete Contact
+  DELETE 3.13.86.142:3000/contacts/617daf73f2967f0ec893da27 [errored]
+     connect ENETUNREACH 3.13.86.142:3000
+ 18. Response time is less than 3000ms
+ 19. Response time is less than 200ms
+
+□ Negative Tests
+└ Get Contact Not Found
+  GET 3.13.86.142:3000/contacts/617daf73f2967f0ec893da270000 [errored]
+     connect ENETUNREACH 3.13.86.142:3000
+ 21. Response time is less than 3000ms
+ 22. Status code is 404
+
+└ Add Contact Missing First Name
+  POST 3.13.86.142:3000/contacts [errored]
+     connect ENETUNREACH 3.13.86.142:3000
+ 24. Response time is less than 3000ms
+ 25. Missing First name error is returned
+
+└ Add Contact Company Too Long
+  POST 3.13.86.142:3000/contacts [errored]
+     connect ENETUNREACH 3.13.86.142:3000
+ 27. Response time is less than 3000ms
+
+└ Add Contact Last Name Invalid
+  POST 3.13.86.142:3000/contacts [errored]
+     connect ENETUNREACH 3.13.86.142:3000
+ 29. Response time is less than 3000ms
+
+└ Add Contact Invalid Email
+  POST 3.13.86.142:3000/contacts [errored]
+     connect ENETUNREACH 3.13.86.142:3000
+ 31. Response time is less than 3000ms
+
+└ Add Contact Missing Email
+  POST 3.13.86.142:3000/contacts [errored]
+     connect ENETUNREACH 3.13.86.142:3000
+ 33. Response time is less than 3000ms
+ 34⠄ JSONError in test-script
+
+└ Add Contact
+  POST 3.13.86.142:3000/contacts/ [errored]
+     connect ENETUNREACH 3.13.86.142:3000
+ 36. Response time is less than 3000ms
+ 37⠄ JSONError in test-script
+
+└ Update Contact Missing Email
+  PUT 3.13.86.142:3000/contacts/61ea43bdf2967f0ec8948b10 [errored]
+     connect ENETUNREACH 3.13.86.142:3000
+ 39. Response time is less than 3000ms
+ 40. Missing email error is returned
+
+┌─────────────────────────┬──────────┬──────────┐
+│                         │ executed │   failed │
+├─────────────────────────┼──────────┼──────────┤
+│              iterations │        1 │        0 │
+├─────────────────────────┼──────────┼──────────┤
+│                requests │       13 │       13 │
+├─────────────────────────┼──────────┼──────────┤
+│            test-scripts │       26 │        4 │
+├─────────────────────────┼──────────┼──────────┤
+│      prerequest-scripts │       18 │        0 │
+├─────────────────────────┼──────────┼──────────┤
+│              assertions │       23 │       23 │
+├─────────────────────────┴──────────┴──────────┤
+│ total run duration: 1282ms                    │
+├───────────────────────────────────────────────┤
+│ total data received: 0B (approx)              │
+└───────────────────────────────────────────────┘
+
+   #  failure         detail                                                                                                                                                                             
+                                                                                                                                                                                                         
+ 01.  Error                                                                                                                                                                                              
+                      connect ENETUNREACH 3.13.86.142:3000                                                                                                                                               
+                      at request                                                                                                                                                                         
+                      inside "Basic Endpoint Test / Get Contact Lists"                                                                                                                                   
+                                                                                                                                                                                                         
+ 02.  AssertionError  Response time is less than 3000ms                                                                                                                                                  
+                      expected undefined to be a number or a date                                                                                                                                        
+                      at assertion:0 in test-script                                                                                                                                                      
+                      inside "Basic Endpoint Test / Get Contact Lists"                                                                                                                                   
+                                                                                                                                                                                                         
+ 03.  AssertionError  Response time is less than 200ms                                                                                                                                                   
+                      expected undefined to be a number or a date                                                                                                                                        
+                      at assertion:0 in test-script                                                                                                                                                      
+                      inside "Basic Endpoint Test / Get Contact Lists"                                                                                                                                   
+                                                                                                                                                                                                         
+ 04.  AssertionError  Status code is 200                                                                                                                                                                 
+                      expected { Object (id, _details, ...) } to have property 'code'                                                                                                                    
+                      at assertion:0 in test-script                                                                                                                                                      
+                      inside "Basic Endpoint Test / Get Contact Lists"                                                                                                                                   
+                                                                                                                                                                                                         
+ 05.  AssertionError  Content-Type is application/json                                                                                                                                                   
+                      expected response to have header with key 'Content-Type'                                                                                                                           
+                      at assertion:1 in test-script                                                                                                                                                      
+                      inside "Basic Endpoint Test / Get Contact Lists"                                                                                                                                   
+                                                                                                                                                                                                         
+ 06.  Error                                                                                                                                                                                              
+                      connect ENETUNREACH 3.13.86.142:3000                                                                                                                                               
+                      at request                                                                                                                                                                         
+                      inside "Basic Endpoint Test / Add Contact Lists"                                                                                                                                   
+                                                                                                                                                                                                         
+ 07.  AssertionError  Response time is less than 3000ms                                                                                                                                                  
+                      expected undefined to be a number or a date                                                                                                                                        
+                      at assertion:0 in test-script                                                                                                                                                      
+                      inside "Basic Endpoint Test / Add Contact Lists"                                                                                                                                   
+                                                                                                                                                                                                         
+ 08.  AssertionError  Response time is less than 200ms                                                                                                                                                   
+                      expected undefined to be a number or a date                                                                                                                                        
+                      at assertion:0 in test-script                                                                                                                                                      
+                      inside "Basic Endpoint Test / Add Contact Lists"                                                                                                                                   
+                                                                                                                                                                                                         
+ 09.  JSONError                                                                                                                                                                                          
+                      Unexpected token u in JSON at position 0                                                                                                                                           
+                      at test-script                                                                                                                                                                     
+                      inside "Basic Endpoint Test / Add Contact Lists"                                                                                                                                   
+                                                                                                                                                                                                         
+ 10.  Error                                                                                                                                                                                              
+                      connect ENETUNREACH 3.13.86.142:3000                                                                                                                                               
+                      at request                                                                                                                                                                         
+                      inside "Basic Endpoint Test / Get Contact"                                                                                                                                         
+                                                                                                                                                                                                         
+ 11.  AssertionError  Response time is less than 3000ms                                                                                                                                                  
+                      expected undefined to be a number or a date                                                                                                                                        
+                      at assertion:0 in test-script                                                                                                                                                      
+                      inside "Basic Endpoint Test / Get Contact"                                                                                                                                         
+                                                                                                                                                                                                         
+ 12.  AssertionError  Response time is less than 200ms                                                                                                                                                   
+                      expected undefined to be a number or a date                                                                                                                                        
+                      at assertion:0 in test-script                                                                                                                                                      
+                      inside "Basic Endpoint Test / Get Contact"                                                                                                                                         
+                                                                                                                                                                                                         
+ 13.  JSONError                                                                                                                                                                                          
+                      Unexpected token u in JSON at position 0                                                                                                                                           
+                      at test-script                                                                                                                                                                     
+                      inside "Basic Endpoint Test / Get Contact"                                                                                                                                         
+                                                                                                                                                                                                         
+ 14.  Error                                                                                                                                                                                              
+                      connect ENETUNREACH 3.13.86.142:3000                                                                                                                                               
+                      at request                                                                                                                                                                         
+                      inside "Basic Endpoint Test / Update Contact"                                                                                                                                      
+                                                                                                                                                                                                         
+ 15.  AssertionError  Response time is less than 3000ms                                                                                                                                                  
+                      expected undefined to be a number or a date                                                                                                                                        
+                      at assertion:0 in test-script                                                                                                                                                      
+                      inside "Basic Endpoint Test / Update Contact"                                                                                                                                      
+                                                                                                                                                                                                         
+ 16.  AssertionError  Response time is less than 200ms                                                                                                                                                   
+                      expected undefined to be a number or a date                                                                                                                                        
+                      at assertion:0 in test-script                                                                                                                                                      
+                      inside "Basic Endpoint Test / Update Contact"                                                                                                                                      
+                                                                                                                                                                                                         
+ 17.  Error                                                                                                                                                                                              
+                      connect ENETUNREACH 3.13.86.142:3000                                                                                                                                               
+                      at request                                                                                                                                                                         
+                      inside "Basic Endpoint Test / Delete Contact"                                                                                                                                      
+                                                                                                                                                                                                         
+ 18.  AssertionError  Response time is less than 3000ms                                                                                                                                                  
+                      expected undefined to be a number or a date                                                                                                                                        
+                      at assertion:0 in test-script                                                                                                                                                      
+                      inside "Basic Endpoint Test / Delete Contact"                                                                                                                                      
+                                                                                                                                                                                                         
+ 19.  AssertionError  Response time is less than 200ms                                                                                                                                                   
+                      expected undefined to be a number or a date                                                                                                                                        
+                      at assertion:0 in test-script                                                                                                                                                      
+                      inside "Basic Endpoint Test / Delete Contact"                                                                                                                                      
+                                                                                                                                                                                                         
+ 20.  Error                                                                                                                                                                                              
+                      connect ENETUNREACH 3.13.86.142:3000                                                                                                                                               
+                      at request                                                                                                                                                                         
+                      inside "Negative Tests / Get Contact Not Found"                                                                                                                                    
+                                                                                                                                                                                                         
+ 21.  AssertionError  Response time is less than 3000ms                                                                                                                                                  
+                      expected undefined to be a number or a date                                                                                                                                        
+                      at assertion:0 in test-script                                                                                                                                                      
+                      inside "Negative Tests / Get Contact Not Found"                                                                                                                                    
+                                                                                                                                                                                                         
+ 22.  AssertionError  Status code is 404                                                                                                                                                                 
+                      expected { Object (id, _details, ...) } to have property 'code'                                                                                                                    
+                      at assertion:0 in test-script                                                                                                                                                      
+                      inside "Negative Tests / Get Contact Not Found"                                                                                                                                    
+                                                                                                                                                                                                         
+ 23.  Error                                                                                                                                                                                              
+                      connect ENETUNREACH 3.13.86.142:3000                                                                                                                                               
+                      at request                                                                                                                                                                         
+                      inside "Negative Tests / Add Contact Missing First Name"                                                                                                                           
+                                                                                                                                                                                                         
+ 24.  AssertionError  Response time is less than 3000ms                                                                                                                                                  
+                      expected undefined to be a number or a date                                                                                                                                        
+                      at assertion:0 in test-script                                                                                                                                                      
+                      inside "Negative Tests / Add Contact Missing First Name"                                                                                                                           
+                                                                                                                                                                                                         
+ 25.  AssertionError  Missing First name error is returned                                                                                                                                               
+                      the given combination of arguments (undefined and string) is invalid for this assertion. You can use an array, a map, an object, a set, a string, or a weakset instead of a string 
+                      at assertion:0 in test-script                                                                                                                                                      
+                      inside "Negative Tests / Add Contact Missing First Name"                                                                                                                           
+                                                                                                                                                                                                         
+ 26.  Error                                                                                                                                                                                              
+                      connect ENETUNREACH 3.13.86.142:3000                                                                                                                                               
+                      at request                                                                                                                                                                         
+                      inside "Negative Tests / Add Contact Company Too Long"                                                                                                                             
+                                                                                                                                                                                                         
+ 27.  AssertionError  Response time is less than 3000ms                                                                                                                                                  
+                      expected undefined to be a number or a date                                                                                                                                        
+                      at assertion:0 in test-script                                                                                                                                                      
+                      inside "Negative Tests / Add Contact Company Too Long"                                                                                                                             
+                                                                                                                                                                                                         
+ 28.  Error                                                                                                                                                                                              
+                      connect ENETUNREACH 3.13.86.142:3000                                                                                                                                               
+                      at request                                                                                                                                                                         
+                      inside "Negative Tests / Add Contact Last Name Invalid"                                                                                                                            
+                                                                                                                                                                                                         
+ 29.  AssertionError  Response time is less than 3000ms                                                                                                                                                  
+                      expected undefined to be a number or a date                                                                                                                                        
+                      at assertion:0 in test-script                                                                                                                                                      
+                      inside "Negative Tests / Add Contact Last Name Invalid"                                                                                                                            
+                                                                                                                                                                                                         
+ 30.  Error                                                                                                                                                                                              
+                      connect ENETUNREACH 3.13.86.142:3000                                                                                                                                               
+                      at request                                                                                                                                                                         
+                      inside "Negative Tests / Add Contact Invalid Email"                                                                                                                                
+                                                                                                                                                                                                         
+ 31.  AssertionError  Response time is less than 3000ms                                                                                                                                                  
+                      expected undefined to be a number or a date                                                                                                                                        
+                      at assertion:0 in test-script                                                                                                                                                      
+                      inside "Negative Tests / Add Contact Invalid Email"                                                                                                                                
+                                                                                                                                                                                                         
+ 32.  Error                                                                                                                                                                                              
+                      connect ENETUNREACH 3.13.86.142:3000                                                                                                                                               
+                      at request                                                                                                                                                                         
+                      inside "Negative Tests / Add Contact Missing Email"                                                                                                                                
+                                                                                                                                                                                                         
+ 33.  AssertionError  Response time is less than 3000ms                                                                                                                                                  
+                      expected undefined to be a number or a date                                                                                                                                        
+                      at assertion:0 in test-script                                                                                                                                                      
+                      inside "Negative Tests / Add Contact Missing Email"                                                                                                                                
+                                                                                                                                                                                                         
+ 34.  JSONError                                                                                                                                                                                          
+                      Unexpected token u in JSON at position 0                                                                                                                                           
+                      at test-script                                                                                                                                                                     
+                      inside "Negative Tests / Add Contact Missing Email"                                                                                                                                
+                                                                                                                                                                                                         
+ 35.  Error                                                                                                                                                                                              
+                      connect ENETUNREACH 3.13.86.142:3000                                                                                                                                               
+                      at request                                                                                                                                                                         
+                      inside "Negative Tests / Add Contact"                                                                                                                                              
+                                                                                                                                                                                                         
+ 36.  AssertionError  Response time is less than 3000ms                                                                                                                                                  
+                      expected undefined to be a number or a date                                                                                                                                        
+                      at assertion:0 in test-script                                                                                                                                                      
+                      inside "Negative Tests / Add Contact"                                                                                                                                              
+                                                                                                                                                                                                         
+ 37.  JSONError                                                                                                                                                                                          
+                      Unexpected token u in JSON at position 0                                                                                                                                           
+                      at test-script                                                                                                                                                                     
+                      inside "Negative Tests / Add Contact"                                                                                                                                              
+                                                                                                                                                                                                         
+ 38.  Error                                                                                                                                                                                              
+                      connect ENETUNREACH 3.13.86.142:3000                                                                                                                                               
+                      at request                                                                                                                                                                         
+                      inside "Negative Tests / Update Contact Missing Email"                                                                                                                             
+                                                                                                                                                                                                         
+ 39.  AssertionError  Response time is less than 3000ms                                                                                                                                                  
+                      expected undefined to be a number or a date                                                                                                                                        
+                      at assertion:0 in test-script                                                                                                                                                      
+                      inside "Negative Tests / Update Contact Missing Email"                                                                                                                             
+                                                                                                                                                                                                         
+ 40.  AssertionError  Missing email error is returned                                                                                                                                                    
+                      the given combination of arguments (undefined and string) is invalid for this assertion. You can use an array, a map, an object, a set, a string, or a weakset instead of a string 
+                      at assertion:0 in test-script                                                                                                                                                      
+                      inside "Negative Tests / Update Contact Missing Email"                                                                                                                             
+Build step 'Execute shell' marked build as failure
+Finished: FAILURE
