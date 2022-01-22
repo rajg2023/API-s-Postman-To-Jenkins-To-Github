@@ -27,7 +27,7 @@
           }
         }
       ],
-      "_postman_id": "22668ab4-2cd4-4b40-9091-edecdac0111e",
+      "id": "22668ab4-2cd4-4b40-9091-edecdac0111e",
       "protocolProfileBehavior": {
         "disableBodyPruning": true
       },
@@ -79,7 +79,7 @@
           }
         }
       ],
-      "_postman_id": "ce4b48ba-605f-423d-99c6-8e13418593f7",
+      "id": "ce4b48ba-605f-423d-99c6-8e13418593f7",
       "protocolProfileBehavior": {
         "disableBodyPruning": true
       },
@@ -113,6 +113,43 @@
           "body": "{\n\t\"id\": 1,\n\t\"name\": \"Amy\",\n\t\"pets\": {\n\t\t\"cats\": [{\n\t\t\t\t\"name\": \"Fluffy\",\n\t\t\t\t\"age\": 2,\n\t\t\t\t\"breed\": \"Persian\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"name\": \"Mister Whiskers\",\n\t\t\t\t\"age\": 4,\n\t\t\t\t\"breed\": \"Siamese\"\n\t\t\t}\n\t\t],\n\t\t\"dogs\": [{\n\t\t\t\"name\": \"Spot\",\n\t\t\t\"age\": 3,\n\t\t\t\"breed\": \"Labrador Retriever\"\n\t\t}]\n\t}\n}"
         }
       ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "d0f08011-a8a2-4657-9962-56d4d0d9ddf5",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "25daf1d4-3138-4a43-8893-110e09768dca",
+        "type": "text/javascript",
+        "exec": [
+          "pm.test(\"Carol's Second dog name is Fred\", function () {",
+          "    var jsonData = pm.response.json();",
+          "    pm.expect(jsonData.owners[2].pets.dogs[1].name).to.eql(\"Fred\");",
+          "});",
+          "",
+          "pm.test(\"Bob's first cat is two years old\", function () {",
+          "    var jsonData = pm.response.json();",
+          "    pm.expect(jsonData.owners[1].pets.cats[0].age).to.eql(2);",
+          "});",
+          "",
+          "",
+          "",
+          "pm.test(\"Amy's second cat is Siamese\", function () {",
+          "    var jsonData = pm.response.json();",
+          "    pm.expect(jsonData.pets.cats[1].breed).to.eql(\"Siamese\");",
+          "});"
+        ]
+      }
     }
   ]
 }
