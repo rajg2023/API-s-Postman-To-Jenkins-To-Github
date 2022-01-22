@@ -1,0 +1,57 @@
+{
+	"id": "88690e89-e521-4f0f-8e95-0f7ed657076f",
+	"name": "Contact Lists",
+	"values": [
+		{
+			"key": "firstName",
+			"value": "CrewChangeds",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "lastName",
+			"value": "rajChangeds",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "contactId",
+			"value": "61ea46fdf2967f0ec8948b20",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "email",
+			"value": "dlkjfgkljdgflaghfjlasd@email.com",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "city",
+			"value": "Cincinnati,OH",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "country",
+			"value": "USA",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "jobTitle",
+			"value": "Software Engineer",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "Company",
+			"value": "Giri Consulting Services",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2022-01-21T07:39:14.395Z",
+	"_postman_exported_using": "Postman/9.9.3"
+}

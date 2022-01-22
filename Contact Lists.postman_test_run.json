@@ -1,0 +1,450 @@
+{
+	"id": "b3d26129-96e6-49da-80b7-d09b37f513d8",
+	"name": "Contact Lists",
+	"timestamp": "2022-01-21T07:09:36.673Z",
+	"collection_id": "19255095-a9ebe5f7-f1a9-45cc-880a-7b28ae2189c7",
+	"folder_id": 0,
+	"environment_id": "88690e89-e521-4f0f-8e95-0f7ed657076f",
+	"totalPass": 22,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "0f0d7806-de93-4980-9b2e-cc9a3f03a613",
+			"name": "Get Contact Lists",
+			"url": "http://3.13.86.142:3000/contacts/61ea46fdf2967f0ec8948b20",
+			"time": 59,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is less than 3000ms": true,
+				"Response time is less than 200ms": true,
+				"Status code is 200": true,
+				"Content-Type is application/json": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 3000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 200ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type is application/json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				59
+			],
+			"allTests": [
+				{
+					"Response time is less than 3000ms": true,
+					"Response time is less than 200ms": true,
+					"Status code is 200": true,
+					"Content-Type is application/json": true
+				}
+			]
+		},
+		{
+			"id": "61abde8f-e328-44c3-8af3-c8a3d81dadf1",
+			"name": "Add Contact Lists",
+			"url": "http://3.13.86.142:3000/contacts/",
+			"time": 34,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is less than 3000ms": true,
+				"Response time is less than 200ms": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 3000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 200ms": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				34
+			],
+			"allTests": [
+				{
+					"Response time is less than 3000ms": true,
+					"Response time is less than 200ms": true
+				}
+			]
+		},
+		{
+			"id": "779ac75d-93fe-4867-b39c-6ba0f34c592e",
+			"name": "Update Contact",
+			"url": "http://3.13.86.142:3000/contacts/61ea43bdf2967f0ec8948b10",
+			"time": 30,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"Response time is less than 3000ms": true,
+				"Response time is less than 200ms": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 3000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 200ms": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				30
+			],
+			"allTests": [
+				{
+					"Response time is less than 3000ms": true,
+					"Response time is less than 200ms": true
+				}
+			]
+		},
+		{
+			"id": "fe4aede4-7f91-41c9-88ad-a6056fad186a",
+			"name": "Delete Contact",
+			"url": "http://3.13.86.142:3000/contacts/617daf73f2967f0ec893da27",
+			"time": 30,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Response time is less than 3000ms": true,
+				"Response time is less than 200ms": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 3000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 200ms": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				30
+			],
+			"allTests": [
+				{
+					"Response time is less than 3000ms": true,
+					"Response time is less than 200ms": true
+				}
+			]
+		},
+		{
+			"id": "e866a867-e1cb-48f0-941f-fa8533a8621f",
+			"name": "Get Contact Not Found",
+			"url": "http://3.13.86.142:3000/contacts/617daf73f2967f0ec893da270000",
+			"time": 30,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Response time is less than 3000ms": true,
+				"Status code is 404": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 3000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				30
+			],
+			"allTests": [
+				{
+					"Response time is less than 3000ms": true,
+					"Status code is 404": true
+				}
+			]
+		},
+		{
+			"id": "c592abb9-a0ed-4d81-a8a6-8f8a2a3d0209",
+			"name": "Add Contact Missing First Name",
+			"url": "http://3.13.86.142:3000/contacts",
+			"time": 31,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Response time is less than 3000ms": true,
+				"Missing First name error is returned": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 3000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Missing First name error is returned": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				31
+			],
+			"allTests": [
+				{
+					"Response time is less than 3000ms": true,
+					"Missing First name error is returned": true
+				}
+			]
+		},
+		{
+			"id": "61021882-c461-4405-98ab-fcccfe91f008",
+			"name": "Add Contact Company Too Long",
+			"url": "http://3.13.86.142:3000/contacts",
+			"time": 30,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Response time is less than 3000ms": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 3000ms": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				30
+			],
+			"allTests": [
+				{
+					"Response time is less than 3000ms": true
+				}
+			]
+		},
+		{
+			"id": "5f494bca-1b24-452d-be42-ea3b62518b55",
+			"name": "Add Contact Last Name Invalid",
+			"url": "http://3.13.86.142:3000/contacts",
+			"time": 30,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Response time is less than 3000ms": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 3000ms": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				30
+			],
+			"allTests": [
+				{
+					"Response time is less than 3000ms": true
+				}
+			]
+		},
+		{
+			"id": "e77d478e-4b2e-434a-8376-6d40689802ed",
+			"name": "Add Contact Invalid Email",
+			"url": "http://3.13.86.142:3000/contacts",
+			"time": 32,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Response time is less than 3000ms": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 3000ms": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				32
+			],
+			"allTests": [
+				{
+					"Response time is less than 3000ms": true
+				}
+			]
+		},
+		{
+			"id": "d67d94b1-028d-4f3c-b972-aafaf5fb2fa7",
+			"name": "Add Contact Missing Email",
+			"url": "http://3.13.86.142:3000/contacts",
+			"time": 30,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Response time is less than 3000ms": true,
+				"Missing email error is returned": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 3000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Missing email error is returned": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				30
+			],
+			"allTests": [
+				{
+					"Response time is less than 3000ms": true,
+					"Missing email error is returned": true
+				}
+			]
+		},
+		{
+			"id": "9f7918f2-3fb2-4c86-b10c-b509292e4625",
+			"name": "Add Contact",
+			"url": "http://3.13.86.142:3000/contacts/",
+			"time": 30,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is less than 3000ms": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 3000ms": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				30
+			],
+			"allTests": [
+				{
+					"Response time is less than 3000ms": true
+				}
+			]
+		},
+		{
+			"id": "6d90c3a1-d070-4a5a-ba0c-5035cd5cfd08",
+			"name": "Update Contact Missing Email",
+			"url": "http://3.13.86.142:3000/contacts/61ea43bdf2967f0ec8948b10",
+			"time": 31,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Response time is less than 3000ms": true,
+				"Missing email error is returned": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 3000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Missing email error is returned": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				31
+			],
+			"allTests": [
+				{
+					"Response time is less than 3000ms": true,
+					"Missing email error is returned": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 397,
+	"collection": {
+		"requests": [
+			{
+				"id": "0f0d7806-de93-4980-9b2e-cc9a3f03a613",
+				"method": "GET"
+			},
+			{
+				"id": "61abde8f-e328-44c3-8af3-c8a3d81dadf1",
+				"method": "POST"
+			},
+			{
+				"id": "779ac75d-93fe-4867-b39c-6ba0f34c592e",
+				"method": "PUT"
+			},
+			{
+				"id": "fe4aede4-7f91-41c9-88ad-a6056fad186a",
+				"method": "DELETE"
+			},
+			{
+				"id": "e866a867-e1cb-48f0-941f-fa8533a8621f",
+				"method": "GET"
+			},
+			{
+				"id": "c592abb9-a0ed-4d81-a8a6-8f8a2a3d0209",
+				"method": "POST"
+			},
+			{
+				"id": "61021882-c461-4405-98ab-fcccfe91f008",
+				"method": "POST"
+			},
+			{
+				"id": "5f494bca-1b24-452d-be42-ea3b62518b55",
+				"method": "POST"
+			},
+			{
+				"id": "e77d478e-4b2e-434a-8376-6d40689802ed",
+				"method": "POST"
+			},
+			{
+				"id": "d67d94b1-028d-4f3c-b972-aafaf5fb2fa7",
+				"method": "POST"
+			},
+			{
+				"id": "9f7918f2-3fb2-4c86-b10c-b509292e4625",
+				"method": "POST"
+			},
+			{
+				"id": "6d90c3a1-d070-4a5a-ba0c-5035cd5cfd08",
+				"method": "PUT"
+			}
+		]
+	}
+}
