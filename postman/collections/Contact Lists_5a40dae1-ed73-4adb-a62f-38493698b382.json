@@ -1,0 +1,678 @@
+{
+    "info": {
+        "_postman_id": "a9ebe5f7-f1a9-45cc-880a-7b28ae2189c7",
+        "name": "Contact Lists",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Basic Endpoint Test",
+            "item": [
+                {
+                    "name": "Get Contact Lists",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "id": "119971ce-1ba4-4935-8841-f35f789ba7ab",
+                                "exec": [
+                                    "pm.test(\"Status code is 200\", function () {\r",
+                                    "    pm.response.to.have.status(200);\r",
+                                    "});\r",
+                                    "\r",
+                                    "pm.test(\"Content-Type is application/json\", function () {\r",
+                                    "    pm.response.to.have.header(\"Content-Type\", \"application/json; charset=utf-8\");\r",
+                                    "});\r",
+                                    ""
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "id": "0f0d7806-de93-4980-9b2e-cc9a3f03a613",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "3.13.86.142:3000/contacts/",
+                            "host": [
+                                "3",
+                                "13",
+                                "86",
+                                "142"
+                            ],
+                            "port": "3000",
+                            "path": [
+                                "contacts",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Add Contact Lists",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "id": "80f1cc32-ff0b-4062-9454-8a1f59c54239",
+                                "exec": [
+                                    "var jsonData = pm.response.json();\r",
+                                    "pm.environment.set(\"contactId\", jsonData._Id);"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "id": "61abde8f-e328-44c3-8af3-c8a3d81dadf1",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n       \r\n        \"firstName\": \"{{firstName}}\",\r\n        \"lastName\": \"{{lastName}}\",\r\n        \"email\": \"{{email}}\",\r\n        \"location\": {\r\n            \"city\": \"{{city}}\",\r\n            \"country\": \"{{country}}\"\r\n        },\r\n        \"employer\": {\r\n            \"jobTitle\": \"{{jobTitle}}\",\r\n            \"company\": \"{{Company}}\"\r\n        },\r\n        \"__v\": 0\r\n    }",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "3.13.86.142:3000/contacts/",
+                            "host": [
+                                "3",
+                                "13",
+                                "86",
+                                "142"
+                            ],
+                            "port": "3000",
+                            "path": [
+                                "contacts",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Contact",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "id": "fa8ef8d8-cd51-4df7-b70a-49d13c205f07",
+                                "exec": [
+                                    "\r",
+                                    "var jsonData = pm.response.json();\r",
+                                    "\r",
+                                    "pm.test(\"Correct first name is returned\", function () {\r",
+                                    "    pm.expect(jsonData.firstName).to.eql(environment.firstName);\r",
+                                    "});\r",
+                                    "\r",
+                                    "pm.test(\"Correct last name is returned\", function () {\r",
+                                    "    \r",
+                                    "    pm.expect(jsonData.lastName).to.eql(environment.lastName);\r",
+                                    "});\r",
+                                    "\r",
+                                    "pm.test(\"Correct City name is returned\", function () {\r",
+                                    "    \r",
+                                    "    pm.expect(jsonData.location.city).to.eql(\"Cincinnati,OH\");\r",
+                                    "});\r",
+                                    "\r",
+                                    "pm.test(\"Correct Contact is returned\", function () {\r",
+                                    "    pm.expect(pm.response.text()).to.include(\"Giri\");\r",
+                                    "});\r",
+                                    "\r",
+                                    "\r",
+                                    "\r",
+                                    "\r",
+                                    ""
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "id": "4c23ede6-be29-4ff2-b5bd-037de1f9c537",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "3.13.86.142:3000/contacts/{{contactId}}",
+                            "host": [
+                                "3",
+                                "13",
+                                "86",
+                                "142"
+                            ],
+                            "port": "3000",
+                            "path": [
+                                "contacts",
+                                "{{contactId}}"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Contact",
+                    "id": "779ac75d-93fe-4867-b39c-6ba0f34c592e",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n        \r\n        \"firstName\": \"RajivNowenoweee\",\r\n        \"lastName\": \"Changed\",\r\n        \"email\": \"cjones@thinkingtester.com\",\r\n        \"location\": {\r\n            \"city\": \"Seattle, WA\",\r\n            \"country\": \"USA\"\r\n        },\r\n        \"employer\": {\r\n            \"jobTitle\": \"Software Tester\",\r\n            \"company\": \"abcdefghijklmnopqrstuvwxyz\"\r\n        },\r\n        \"__v\": 0\r\n    }",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "3.13.86.142:3000/contacts/61ea43bdf2967f0ec8948b10",
+                            "host": [
+                                "3",
+                                "13",
+                                "86",
+                                "142"
+                            ],
+                            "port": "3000",
+                            "path": [
+                                "contacts",
+                                "61ea43bdf2967f0ec8948b10"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Contact",
+                    "id": "fe4aede4-7f91-41c9-88ad-a6056fad186a",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "3.13.86.142:3000/contacts/617daf73f2967f0ec893da27",
+                            "host": [
+                                "3",
+                                "13",
+                                "86",
+                                "142"
+                            ],
+                            "port": "3000",
+                            "path": [
+                                "contacts",
+                                "617daf73f2967f0ec893da27"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "https://bf7a13c5-00fb-4b67-8d9d-0e3c808044be.mock.pstmn.io",
+                    "id": "5f1d4f38-867f-426e-a7b9-2a5eac18b5af",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "https://bf7a13c5-00fb-4b67-8d9d-0e3c808044be.mock.pstmn.io/contacts",
+                            "protocol": "https",
+                            "host": [
+                                "bf7a13c5-00fb-4b67-8d9d-0e3c808044be",
+                                "mock",
+                                "pstmn",
+                                "io"
+                            ],
+                            "path": [
+                                "contacts"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "https://bf7a13c5-00fb-4b67-8d9d-0e3c808044be.mock.pstmn.io",
+                    "id": "ed11fc5f-5fd9-4752-8278-919239e0511f",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "https://bf7a13c5-00fb-4b67-8d9d-0e3c808044be.mock.pstmn.io",
+                            "protocol": "https",
+                            "host": [
+                                "bf7a13c5-00fb-4b67-8d9d-0e3c808044be",
+                                "mock",
+                                "pstmn",
+                                "io"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ],
+            "id": "373b9bb9-9f75-42d0-9893-6e1d26cccaa0",
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "id": "f95f730a-cb01-4e20-bade-6465090e14cf",
+                        "type": "text/javascript",
+                        "exec": [
+                            ""
+                        ]
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "id": "a60952fc-2a76-47f6-b727-9284360cc8aa",
+                        "type": "text/javascript",
+                        "exec": [
+                            "pm.test(\"Response time is less than 200ms\", function () {",
+                            "    pm.expect(pm.response.responseTime).to.be.below(200);",
+                            "});"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Negative Tests",
+            "item": [
+                {
+                    "name": "Get Contact Not Found",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "id": "298ba4d9-d7f0-4c12-9403-5e301fc9af84",
+                                "exec": [
+                                    "pm.test(\"Status code is 404\", function () {\r",
+                                    "    pm.response.to.have.status(404);\r",
+                                    "});"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "id": "e866a867-e1cb-48f0-941f-fa8533a8621f",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "3.13.86.142:3000/contacts/617daf73f2967f0ec893da270000",
+                            "host": [
+                                "3",
+                                "13",
+                                "86",
+                                "142"
+                            ],
+                            "port": "3000",
+                            "path": [
+                                "contacts",
+                                "617daf73f2967f0ec893da270000"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Add Contact Missing First Name",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "id": "db67e9fb-d9e1-48ea-88c8-9d7f96313756",
+                                "exec": [
+                                    "\r",
+                                    "pm.test(\"Missing First name error is returned\", function () {\r",
+                                    "    pm.expect(pm.response.text()).to.include(\"First Name is required\");\r",
+                                    "});\r",
+                                    ""
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "id": "c592abb9-a0ed-4d81-a8a6-8f8a2a3d0209",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n        \"_id\": \"617def72f2967f0ec893da27\",\r\n        \"firstName\": \"\",\r\n        \"lastName\": \"G\",\r\n        \"email\": \"cjones@thinkingtester.com\",\r\n        \"location\": {\r\n            \"city\": \"Seattle, WA\",\r\n            \"country\": \"USA\"\r\n        },\r\n        \"employer\": {\r\n            \"jobTitle\": \"Software Tester\",\r\n            \"company\": \"abcdefghijklmnopqrstuvwxyz\"\r\n        },\r\n        \"__v\": 0\r\n    }",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "3.13.86.142:3000/contacts",
+                            "host": [
+                                "3",
+                                "13",
+                                "86",
+                                "142"
+                            ],
+                            "port": "3000",
+                            "path": [
+                                "contacts"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Add Contact Company Too Long",
+                    "id": "61021882-c461-4405-98ab-fcccfe91f008",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n        \"_id\": \"617def73f2967f0ec893da27\",\r\n        \"firstName\": \"Rajiv\",\r\n        \"lastName\": \"G\",\r\n        \"email\": \"cjones@thinkingtester.com\",\r\n        \"location\": {\r\n            \"city\": \"Seattle, WA\",\r\n            \"country\": \"USA\"\r\n        },\r\n        \"employer\": {\r\n            \"jobTitle\": \"Software Tester\",\r\n            \"company\": \"abcdefghijklmnopqrstuvwxyzdsfasdfasdgafsdgafdgfadgadfgaggfdgafdgafdgadfgadfgsdfgsdfgsdfgsdfgsdfg\"\r\n        },\r\n        \"__v\": 0\r\n    }",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "3.13.86.142:3000/contacts",
+                            "host": [
+                                "3",
+                                "13",
+                                "86",
+                                "142"
+                            ],
+                            "port": "3000",
+                            "path": [
+                                "contacts"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Add Contact Last Name Invalid",
+                    "id": "5f494bca-1b24-452d-be42-ea3b62518b55",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n        \"_id\": \"617def73f2967f0ec893da27\",\r\n        \"firstName\": \"Rajiv\",\r\n        \"lastName\": \"G12345\",\r\n        \"email\": \"cjones@thinkingtester.com\",\r\n        \"location\": {\r\n            \"city\": \"Seattle, WA\",\r\n            \"country\": \"USA\"\r\n        },\r\n        \"employer\": {\r\n            \"jobTitle\": \"Software Tester\",\r\n            \"company\": \"abcdefghijklmnopqrstuvwxyz\"\r\n        },\r\n        \"__v\": 0\r\n    }",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "3.13.86.142:3000/contacts",
+                            "host": [
+                                "3",
+                                "13",
+                                "86",
+                                "142"
+                            ],
+                            "port": "3000",
+                            "path": [
+                                "contacts"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Add Contact Invalid Email",
+                    "id": "e77d478e-4b2e-434a-8376-6d40689802ed",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n        \"_id\": \"617def73f2967f0ec893da27\",\r\n        \"firstName\": \"Rajiv\",\r\n        \"lastName\": \"G\",\r\n        \"email\": \"cjones@thinkingtester\",\r\n        \"location\": {\r\n            \"city\": \"Seattle, WA\",\r\n            \"country\": \"USA\"\r\n        },\r\n        \"employer\": {\r\n            \"jobTitle\": \"Software Tester\",\r\n            \"company\": \"abcdefghijklmnopqrstuvwxyz\"\r\n        },\r\n        \"__v\": 0\r\n    }",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "3.13.86.142:3000/contacts",
+                            "host": [
+                                "3",
+                                "13",
+                                "86",
+                                "142"
+                            ],
+                            "port": "3000",
+                            "path": [
+                                "contacts"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Add Contact Missing Email",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "id": "d0947c07-bc2f-4b66-83ec-39c3b7e3359c",
+                                "exec": [
+                                    "var jsonData = pm.response.json();\r",
+                                    "pm.environment.set(\"contactId\", jsonData._Id);\r",
+                                    "\r",
+                                    "\r",
+                                    "pm.test(\"Missing email error is returned\", function () {\r",
+                                    "    pm.expect(pm.response.text()).to.include(\"Email is required\");\r",
+                                    "});"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "id": "d67d94b1-028d-4f3c-b972-aafaf5fb2fa7",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n        \"_id\": \"617def73f2967f0ec893da27\",\r\n        \"firstName\": \"Rajiv\",\r\n        \"lastName\": \"G\",\r\n        \"email\": \"\",\r\n        \"location\": {\r\n            \"city\": \"Seattle, WA\",\r\n            \"country\": \"USA\"\r\n        },\r\n        \"employer\": {\r\n            \"jobTitle\": \"Software Tester\",\r\n            \"company\": \"abcdefghijklmnopqrstuvwxyz\"\r\n        },\r\n        \"__v\": 0\r\n    }",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "3.13.86.142:3000/contacts",
+                            "host": [
+                                "3",
+                                "13",
+                                "86",
+                                "142"
+                            ],
+                            "port": "3000",
+                            "path": [
+                                "contacts"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Add Contact",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "id": "2e8b2444-9acb-4434-8678-27cedeb6c829",
+                                "exec": [
+                                    "var jsonData = pm.response.json();\r",
+                                    "pm.environment.set(\"contactId\", jsonData._Id);"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "id": "9f7918f2-3fb2-4c86-b10c-b509292e4625",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n       \r\n        \"firstName\": \"{{firstName}}\",\r\n        \"lastName\": \"{{lastName}}\",\r\n        \"email\": \"{{email}}\",\r\n        \"location\": {\r\n            \"city\": \"{{city}}\",\r\n            \"country\": \"{{country}}\"\r\n        },\r\n        \"employer\": {\r\n            \"jobTitle\": \"{{jobTitle}}\",\r\n            \"company\": \"{{Company}}\"\r\n        },\r\n        \"__v\": 0\r\n    }",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "3.13.86.142:3000/contacts/",
+                            "host": [
+                                "3",
+                                "13",
+                                "86",
+                                "142"
+                            ],
+                            "port": "3000",
+                            "path": [
+                                "contacts",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Contact Missing Email",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "id": "ca846690-7225-431e-84dd-3d1a6486fe0d",
+                                "exec": [
+                                    "pm.test(\"Missing email error is returned\", function () {\r",
+                                    "    pm.expect(pm.response.text()).to.include(\"Email is required\");\r",
+                                    "});\r",
+                                    "pm.globals.get(\"variable_key\");"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "id": "6d90c3a1-d070-4a5a-ba0c-5035cd5cfd08",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n        \r\n        \"firstName\": \"RajivNowenoweee\",\r\n        \"lastName\": \"Changed\",\r\n        \"email\": \"\",\r\n        \"location\": {\r\n            \"city\": \"Seattle, WA\",\r\n            \"country\": \"USA\"\r\n        },\r\n        \"employer\": {\r\n            \"jobTitle\": \"Software Tester\",\r\n            \"company\": \"abcdefghijklmnopqrstuvwxyz\"\r\n        },\r\n        \"__v\": 0\r\n    }",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "3.13.86.142:3000/contacts/61ea43bdf2967f0ec8948b10",
+                            "host": [
+                                "3",
+                                "13",
+                                "86",
+                                "142"
+                            ],
+                            "port": "3000",
+                            "path": [
+                                "contacts",
+                                "61ea43bdf2967f0ec8948b10"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ],
+            "id": "ea4ca858-9f72-4187-a891-92ce9ab7aee0"
+        }
+    ],
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "id": "c75dcb58-61ea-41ec-a485-fa9f30b3f564",
+                "type": "text/javascript",
+                "exec": [
+                    ""
+                ]
+            }
+        },
+        {
+            "listen": "test",
+            "script": {
+                "id": "fcf637ac-4d91-4ad2-b103-8d9733e05630",
+                "type": "text/javascript",
+                "exec": [
+                    "pm.test(\"Response time is less than 3000ms\", function () {",
+                    "    pm.expect(pm.response.responseTime).to.be.below(3000);",
+                    "});"
+                ]
+            }
+        }
+    ]
+}
